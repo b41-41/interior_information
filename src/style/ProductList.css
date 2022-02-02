@@ -3,6 +3,7 @@
   width: 800px;
   height: 162px;
   justify-content: center;
+  overflow: hidden;
 }
 
 .item_pictrue {
