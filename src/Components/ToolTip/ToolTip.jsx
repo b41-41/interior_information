@@ -16,28 +16,25 @@ const ToolTip = ({productList, selectItem}) => {
                             productId={product.productId}
                             >
                         <TooltipImage imageUrl={product.imageUrl} />
-                        {product.outside
-                            ?
+                        
                             <div className="tooltip_desc">
                                 <div className="tooltip_desc-funiture-name">
                                     {product.productName}
                                 </div>
+                                {
+                                product.outside 
+                                ? 
                                 <div className="tooltip_desc-funiture-price">
                                     <span className="expected-price-label">예상가</span>
                                     <span className="price-discount">{commaNumber(product.priceDiscount)}</span>
                                 </div>
-                            </div>
-                            :
-                            <div className="tooltip_desc">
-                                <div className="tooltip_desc-funiture-name">
-                                    {product.productName}
-                                </div>
+                                :
                                 <div className="tooltip_desc-funiture-price">
                                     <span className="tooltip_desc-funiture-price-discount">{product.discountRate}%</span>
-                                <span className="price-discount">{commaNumber(product.priceDiscount)}</span>
+                                    <span className="price-discount">{commaNumber(product.priceDiscount)}</span>
                                 </div>
+                                }
                             </div>
-                            }
                             <div className="tooltip_move-icon-wrapper">
                                 <img className="tooltip_move-icon" src="./img/more.png" alt="상품 정보 보기" />
                             </div>
