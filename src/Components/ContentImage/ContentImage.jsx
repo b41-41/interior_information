@@ -4,7 +4,8 @@ import 'style/ContentImage.css'
 
 const ContentImage = ({imageUrl, id, productList, handleSelect, selectItem}) => {
 
-  return <div className="start-view-content-image">
+  return <>
+    <div className="start-view-content-image">
       <img 
         src={imageUrl} 
         id={`start_image_id_${id}`} 
@@ -27,7 +28,8 @@ const ContentImage = ({imageUrl, id, productList, handleSelect, selectItem}) => 
           </div>
           )
         })}
-    </div>;
+    </div>
+  </>;
 };
 
 const Tag = styled.div`

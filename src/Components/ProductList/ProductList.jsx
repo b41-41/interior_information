@@ -14,7 +14,7 @@ const ProductList = ({productList, handleSelect, selectItem}) => {
             imageUrl={product.imageUrl} 
             productId={product.productId}
             selectItem={selectItem}
-            onClick={() => {handleSelect(product.productId)}}
+            onClick={() => {handleSelect(selectItem === product.productId ? 'none' : product.productId)}}
           />
           </div>
         </div>
