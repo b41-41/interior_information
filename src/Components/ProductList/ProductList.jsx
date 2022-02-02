@@ -8,7 +8,7 @@ const ProductList = ({productList, handleSelect, selectItem}) => {
   return <div className="wrapper">
     {productList && productList.map(product => {
       return (
-        <>
+        <div key={product.productId}>
           <div className="item_pictrue" key={product.productId}>
           <SubImage 
             imageUrl={product.imageUrl} 
@@ -17,7 +17,7 @@ const ProductList = ({productList, handleSelect, selectItem}) => {
             onClick={() => {handleSelect(product.productId)}}
           />
           </div>
-        </>
+        </div>
       )
     })}
   </div>;

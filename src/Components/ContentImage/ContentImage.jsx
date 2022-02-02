@@ -4,8 +4,7 @@ import 'style/ContentImage.css'
 
 const ContentImage = ({imageUrl, id, productList, handleSelect, selectItem}) => {
 
-  return <>
-    <div className="start-view-content-image">
+  return <div className="start-view-content-image">
       <img 
         src={imageUrl} 
         id={`start_image_id_${id}`} 
@@ -15,7 +14,7 @@ const ContentImage = ({imageUrl, id, productList, handleSelect, selectItem}) => 
         />
       {productList && productList.map(product => {
         return (
-          <>
+          <div key={product.productId}>
             {selectItem === product.productId 
             ?
             <Tag key={product.productId} pointX={product.pointX} pointY={product.pointY} onClick={() => {handleSelect('none')}}>
@@ -25,11 +24,10 @@ const ContentImage = ({imageUrl, id, productList, handleSelect, selectItem}) => 
             <Tag key={product.productId} pointX={product.pointX} pointY={product.pointY} onClick={() => {handleSelect(product.productId)}}>
             <img className="tag_image" src="./img/plus_button.png" alt="자세히 보기" />
             </Tag>}
-          </>
+          </div>
           )
         })}
-    </div>
-  </>;
+    </div>;
 };
 
 const Tag = styled.div`
