@@ -13,8 +13,6 @@ function App() {
     });
   }, [])
 
-  console.log(items);
-
   return (
     <>
     <ContentImage imageUrl={items.imageUrl} id={items.id} productList={items.productList} />

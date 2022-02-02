@@ -10,15 +10,17 @@ const ContentImage = ({imageUrl, id, productList}) => {
         src={imageUrl} 
         id={`start_image_id_${id}`} 
         alt="인테리어 이미지" 
-        width="100%" 
+        width="800px" 
         height="auto"
-      />
+        />
       {productList && productList.map(product => {
-        console.log(product)
+        console.log(product);
         return (
-          <Tag key={product.productId} pointX={product.PointX} pointY={product.PointY}>
-            <img className="tag_image" src="./img/plus_button.png" alt="자세히 보기" />
-          </Tag>
+          <>
+            <Tag key={product.productId} pointX={product.pointX} pointY={product.pointY}>
+              <img className="tag_image" src="./img/plus_button.png" alt="자세히 보기" />
+            </Tag>
+          </>
           )
         })}
     </div>
@@ -26,11 +28,11 @@ const ContentImage = ({imageUrl, id, productList}) => {
 };
 
 const Tag = styled.div`
-position: absolute;
-top: ${props => props.pointY && props.pointY}px;
-left: ${props => props.pointX && props.pointX}px;
-width: 40px;
-height: 40px;
+  position: absolute;
+  top: ${props => props.pointX && (props.pointX * 1.6)}px;
+  left: ${props => props.pointY && (props.pointY * 1.6 + 11)}px;
+  width: 40px;
+  height: 40px;
 `;
 
 
