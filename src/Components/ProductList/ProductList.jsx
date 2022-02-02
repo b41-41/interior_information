@@ -29,6 +29,8 @@ const SubImage = styled.div`
   border: ${props => props.productId === props.selectItem ? '2px solid red' : '.5px solid #aaafb9'}};
   border-radius: 16px;
   cursor: pointer;
+  background-position: center;
+  background-size: cover;
   background-image: url(${props => props.imageUrl && props.imageUrl})
 `;
 

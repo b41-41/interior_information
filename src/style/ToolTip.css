@@ -1,0 +1,14 @@
+.tooltip_wrapper {
+  /* position: relative; */
+  width: 800px;
+}
+
+.tooltip_desc {
+  width: 112px;
+  height: 70px;
+}
+
+.tooltip_move-icon {
+  width: 20px;
+  height: 20px;
+}

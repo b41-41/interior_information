@@ -32,10 +32,10 @@ function App() {
         handleSelect={handleSelect} 
         selectItem={selectItem}
       />
-      <ToolTip 
+      {/* <ToolTip 
         productList={items.productList} 
         selectItem={selectItem}
-      />
+      /> */}
     </MainWrapper>
   );
 }

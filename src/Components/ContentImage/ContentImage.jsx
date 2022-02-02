@@ -1,4 +1,5 @@
 import React from 'react';
+import { ToolTip } from 'Components';
 import styled from 'styled-components';
 import 'style/ContentImage.css'
 
@@ -28,6 +29,10 @@ const ContentImage = ({imageUrl, id, productList, handleSelect, selectItem}) => 
           </div>
           )
         })}
+      <ToolTip 
+        productList={productList} 
+        selectItem={selectItem}
+      />
     </div>
   </>;
 };
