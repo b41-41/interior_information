@@ -1,14 +1,47 @@
-.tooltip_wrapper {
-  /* position: relative; */
-  width: 800px;
-}
-
 .tooltip_desc {
+  display: flex;
   width: 112px;
   height: 70px;
+  flex: 1;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-bottom: 2px;
+  overflow: hidden;
+  text-align: left;
+}
+
+.tooltip_move-icon-wrapper {
+  margin: 50px 2px 0 0;
 }
 
 .tooltip_move-icon {
   width: 20px;
   height: 20px;
+}
+
+.tooltip_desc-funiture-name {
+  width: 100%;
+  color: #333c45;
+  text-overflow: elipsis;
+  line-height: 1.3em;
+  /* word-break: keep-all; */
+}
+
+.tooltip_desc-funiture-price {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+.expected-price-label {
+  margin-right: 4px;
+  font-size: 11px;
+  color: #898f94;
+}
+
+.tooltip_desc-funiture-price-discount {
+  margin-right: 4px;
+  color: #ff585d;
 }

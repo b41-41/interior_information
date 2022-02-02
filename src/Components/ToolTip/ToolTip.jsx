@@ -31,13 +31,15 @@ const ToolTip = ({productList, selectItem}) => {
                                 <div className="tooltip_desc-funiture-name">
                                     {product.productName}
                                 </div>
-                                <div className="ooltip_desc-funiture-price">
+                                <div className="tooltip_desc-funiture-price">
                                     <span className="tooltip_desc-funiture-price-discount">{product.discountRate}%</span>
                                 <span className="price-discount">{product.priceDiscount}</span>
                                 </div>
                             </div>
                             }
-                            <img className="tooltip_move-icon" src="./img/more.png" alt="상품 정보 보기" />
+                            <div className="tooltip_move-icon-wrapper">
+                                <img className="tooltip_move-icon" src="./img/more.png" alt="상품 정보 보기" />
+                            </div>
                         </DivTooltip>
                     </div>
                     
@@ -55,6 +57,7 @@ const DivTooltip = styled.div`
     margin: 16px 0;
     padding: 8px 0 8px 8px;
     color: #4a4a4a;
+    font-size: 14px;
     background-color: white;
     border-radius: 7px;
     box-shadow: 3px 3px 8px 0 rgba(0, 0, 0, 0.2);
