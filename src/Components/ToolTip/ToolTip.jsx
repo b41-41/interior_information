@@ -1,4 +1,5 @@
 import React from 'react';
+import commaNumber from 'utils/commaNumber'
 import styled from 'styled-components';
 import 'style/ToolTip.css';
 
@@ -23,7 +24,7 @@ const ToolTip = ({productList, selectItem}) => {
                                 </div>
                                 <div className="tooltip_desc-funiture-price">
                                     <span className="expected-price-label">예상가</span>
-                                    <span className="price-discount">{product.priceDiscount}</span>
+                                    <span className="price-discount">{commaNumber(product.priceDiscount)}</span>
                                 </div>
                             </div>
                             :
@@ -33,7 +34,7 @@ const ToolTip = ({productList, selectItem}) => {
                                 </div>
                                 <div className="tooltip_desc-funiture-price">
                                     <span className="tooltip_desc-funiture-price-discount">{product.discountRate}%</span>
-                                <span className="price-discount">{product.priceDiscount}</span>
+                                <span className="price-discount">{commaNumber(product.priceDiscount)}</span>
                                 </div>
                             </div>
                             }
