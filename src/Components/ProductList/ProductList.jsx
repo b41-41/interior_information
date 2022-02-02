@@ -15,7 +15,13 @@ const ProductList = ({productList, handleSelect, selectItem}) => {
             productId={product.productId}
             selectItem={selectItem}
             onClick={() => {handleSelect(selectItem === product.productId ? 'none' : product.productId)}}
-          />
+          >
+            {product.discountRate !== 0 && 
+              <DiscountBadge>
+                {product.discountRate}<span className="percent">%</span>
+              </DiscountBadge>
+            }
+          </SubImage>
           </div>
         </div>
       )
@@ -24,6 +30,7 @@ const ProductList = ({productList, handleSelect, selectItem}) => {
 };
 
 const SubImage = styled.div`
+  position: relative;
   width: 106px;
   height: 106px;
   border: ${props => props.productId === props.selectItem ? '2px solid red' : '.5px solid #aaafb9'}};
@@ -33,5 +40,25 @@ const SubImage = styled.div`
   background-size: cover;
   background-image: url(${props => props.imageUrl && props.imageUrl})
 `;
+
+const DiscountBadge = styled.div`
+  position: absolute;
+  width: 24px;
+  height: 28px;
+  top: 0;
+  right: 5px;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  font-size: 11px;
+  font-weight: bold;
+  line-height: 25px;
+  color: white;
+  text-align: center;
+  padding-left: 1px;
+  background-image: url("./img/badge.png");
+
+  
+`
 
 export default ProductList;
