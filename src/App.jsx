@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ContentImage, ProductList } from './Components';
 import { getData } from './api/Api';
+import './style/reset.css';
 
 function App() {
 
@@ -16,7 +17,7 @@ function App() {
 
   return (
     <>
-    <ContentImage imageUrl={items.imageUrl} productList={items.productList} />
+    <ContentImage imageUrl={items.imageUrl} id={items.id} productList={items.productList} />
     <ProductList productList={items.productList} />
     </>
   );

@@ -1,0 +1,9 @@
+.start-view-content-image {
+  position: relative;
+  cursor: pointer;
+}
+
+.tag_image {
+  width: 32px;
+  height: 32px;
+}
