@@ -11,14 +11,16 @@ const ProductList = ({productList, handleSelect, selectItem}) => {
     setMoveValue(event.screenX - moveStartValue);
     document.removeEventListener('mousemove', carouselMoveEvent);
   };
+  
   const carouselDownEvent = (event) => {
     setMoveStartValue(event.screenX);
   }
+
   const carouselTouchStart = () => {
     setIsMove(true);
     document.addEventListener('mousedown', carouselDownEvent);
-    // document.removeEventListener('mousedown', carouselDownEvent);
   };
+
   const carouselTouchLeave = () => {
     setIsMove(false);
     document.removeEventListener('mousedown', carouselDownEvent);
@@ -26,6 +28,7 @@ const ProductList = ({productList, handleSelect, selectItem}) => {
     moveValue > 0 && setMoveValue(0);
     moveValue < -100 && setMoveValue(-100);
   };
+
   const carouselTouchMove = () => {
     isMove 
     &&
@@ -33,8 +36,11 @@ const ProductList = ({productList, handleSelect, selectItem}) => {
   }
 
   useEffect(() => {
-    console.log(moveValue);
-  }, [moveValue])
+    productList && 
+    selectItem === productList[0].productId && setMoveValue(0);
+    productList && 
+    selectItem === productList[productList.length - 1].productId && setMoveValue(-100);
+  }, [selectItem])
 
   return <div className="wrapper">
     <Carousel 
