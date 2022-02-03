@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import 'style/ToolTip.css';
 
 const ToolTip = ({productList, selectItem}) => {
-    return <div>
+    return <>
         {
             productList && productList.map(product => {
                 return (
@@ -16,7 +16,6 @@ const ToolTip = ({productList, selectItem}) => {
                             productId={product.productId}
                             >
                         <TooltipImage imageUrl={product.imageUrl} />
-                        
                             <div className="tooltip_desc">
                                 <div className="tooltip_desc-funiture-name">
                                     {product.productName}
@@ -44,7 +43,7 @@ const ToolTip = ({productList, selectItem}) => {
                 );
             })
         }
-    </div>;
+    </>;
 };
 
 const DivTooltip = styled.div`
