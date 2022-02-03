@@ -3,9 +3,10 @@ import styled from 'styled-components';
 import 'style/ProductList.css';
 
 const ProductList = ({productList, handleSelect, selectItem}) => {
-
   
   return <div className="wrapper">
+    <Carousel productLength={productList && productList.length}>
+
     {productList && productList.map(product => {
       return (
         <div key={product.productId}>
@@ -15,7 +16,7 @@ const ProductList = ({productList, handleSelect, selectItem}) => {
             productId={product.productId}
             selectItem={selectItem}
             onClick={() => {handleSelect(selectItem === product.productId ? 'none' : product.productId)}}
-          >
+            >
             {product.discountRate !== 0 && 
               <DiscountBadge>
                 {product.discountRate}<span className="percent">%</span>
@@ -26,6 +27,7 @@ const ProductList = ({productList, handleSelect, selectItem}) => {
         </div>
       )
     })}
+    </Carousel>
   </div>;
 };
 
@@ -57,8 +59,11 @@ const DiscountBadge = styled.div`
   text-align: center;
   padding-left: 1px;
   background-image: url("./img/badge.png");
+`;
 
-  
+const Carousel = styled.div`
+  display: flex;
+  width: 100%;
 `
 
 export default ProductList;
