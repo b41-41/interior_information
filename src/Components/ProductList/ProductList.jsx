@@ -7,21 +7,33 @@ const ProductList = ({productList, handleSelect, selectItem}) => {
   const [moveValue, setMoveValue] = useState(0);
   const [isMove, setIsMove] = useState(false);
 
-  const carouselTouchStart = (event) => {
+  const carouselMoveEvent = (event) => {
+    setMoveValue(event.screenX - moveStartValue);
+    document.removeEventListener('mousemove', carouselMoveEvent);
+  };
+  const carouselDownEvent = (event) => {
+    setMoveStartValue(event.screenX);
+  }
+  const carouselTouchStart = () => {
     setIsMove(true);
-    setMoveStartValue(event.pageX);
+    document.addEventListener('mousedown', carouselDownEvent);
+    // document.removeEventListener('mousedown', carouselDownEvent);
   };
   const carouselTouchLeave = () => {
     setIsMove(false);
+    document.removeEventListener('mousedown', carouselDownEvent);
+    document.removeEventListener('mousemove', carouselMoveEvent);
+    moveValue > 0 && setMoveValue(0);
+    moveValue < -100 && setMoveValue(-100);
   };
-  const carouselTouchMove = (event) => {
-    isMove &&
-    setMoveValue(moveStartValue - event.pageX);
+  const carouselTouchMove = () => {
+    isMove 
+    &&
+    document.addEventListener('mousemove', carouselMoveEvent)
   }
-  
+
   useEffect(() => {
-    !isMove &&
-    moveValue > 120 || moveValue < -120 && setMoveValue(0);
+    console.log(moveValue);
   }, [moveValue])
 
   return <div className="wrapper">
@@ -95,7 +107,7 @@ const DiscountBadge = styled.div`
 const Carousel = styled.div`
   display: flex;
   width: 100%;
-  transform: translate(${props => props.moveValue}px, 0px);
+  transform: translate3d(${props => props.moveValue}px, 0px, 0px);
   // transition: 0.2s ease transform;
 `
 
