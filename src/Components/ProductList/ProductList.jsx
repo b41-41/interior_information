@@ -1,11 +1,42 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import 'style/ProductList.css';
 
 const ProductList = ({productList, handleSelect, selectItem}) => {
+  const [moveStartValue, setMoveStartValue] = useState(0);
+  const [moveValue, setMoveValue] = useState(0);
+  const [isMove, setIsMove] = useState(false);
+
+  const carouselTouchStart = (event) => {
+    setIsMove(true);
+    setMoveStartValue(event.pageX);
+  };
+  const carouselTouchLeave = () => {
+    setIsMove(false);
+  };
+  const carouselTouchMove = (event) => {
+    isMove &&
+    setMoveValue(moveStartValue - event.pageX);
+  }
   
+  useEffect(() => {
+    !isMove &&
+    moveValue > 120 || moveValue < -120 && setMoveValue(0);
+  }, [moveValue])
+
   return <div className="wrapper">
-    <Carousel productLength={productList && productList.length}>
+    <Carousel 
+      productLength={productList && productList.length}
+      onTouchStart={carouselTouchStart}
+      onMouseDown={carouselTouchStart}
+      onTouchEnd={carouselTouchLeave}
+      onMouseUp={carouselTouchLeave}
+      onTouchCancel={carouselTouchLeave}
+      onMouseLeave={carouselTouchLeave}
+      onTouchMove={carouselTouchMove}
+      onMouseMove={carouselTouchMove}
+      moveValue={moveValue}
+    >
 
     {productList && productList.map(product => {
       return (
@@ -64,6 +95,8 @@ const DiscountBadge = styled.div`
 const Carousel = styled.div`
   display: flex;
   width: 100%;
+  transform: translate(${props => props.moveValue}px, 0px);
+  // transition: 0.2s ease transform;
 `
 
 export default ProductList;
