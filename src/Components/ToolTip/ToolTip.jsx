@@ -3,46 +3,39 @@ import commaNumber from 'utils/commaNumber'
 import styled from 'styled-components';
 import 'style/ToolTip.css';
 
-const ToolTip = ({productList, selectItem}) => {
+const ToolTip = ({product, selectItem}) => {
     return <>
-        {
-            productList && productList.map(product => {
-                return (
-                    <div key={product.productId}>
-                        <DivTooltip 
-                            pointX={product.pointX} 
-                            pointY={product.pointY}
-                            selectItem={selectItem}
-                            productId={product.productId}
-                            >
-                        <TooltipImage imageUrl={product.imageUrl} />
-                            <div className="tooltip_desc">
-                                <div className="tooltip_desc-funiture-name">
-                                    {product.productName}
-                                </div>
-                                {
-                                product.outside 
-                                ? 
-                                <div className="tooltip_desc-funiture-price">
-                                    <span className="expected-price-label">예상가</span>
-                                    <span className="price-discount">{commaNumber(product.priceDiscount)}</span>
-                                </div>
-                                :
-                                <div className="tooltip_desc-funiture-price">
-                                    <span className="tooltip_desc-funiture-price-discount">{product.discountRate}%</span>
-                                    <span className="price-discount">{commaNumber(product.priceDiscount)}</span>
-                                </div>
-                                }
-                            </div>
-                            <div className="tooltip_move-icon-wrapper">
-                                <img className="tooltip_move-icon" src="./img/more.png" alt="상품 정보 보기" />
-                            </div>
-                        </DivTooltip>
+        <div key={product.productId}>
+            <DivTooltip 
+                pointX={product.pointX} 
+                pointY={product.pointY}
+                selectItem={selectItem}
+                productId={product.productId}
+                >
+            <TooltipImage imageUrl={product.imageUrl} />
+                <div className="tooltip_desc">
+                    <div className="tooltip_desc-funiture-name">
+                        {product.productName}
                     </div>
-                    
-                );
-            })
-        }
+                    {
+                    product.outside 
+                    ? 
+                    <div className="tooltip_desc-funiture-price">
+                        <span className="expected-price-label">예상가</span>
+                        <span className="price-discount">{commaNumber(product.priceDiscount)}</span>
+                    </div>
+                    :
+                    <div className="tooltip_desc-funiture-price">
+                        <span className="tooltip_desc-funiture-price-discount">{product.discountRate}%</span>
+                        <span className="price-discount">{commaNumber(product.priceDiscount)}</span>
+                    </div>
+                    }
+                </div>
+                <div className="tooltip_move-icon-wrapper">
+                    <img className="tooltip_move-icon" src="./img/more.png" alt="상품 정보 보기" />
+                </div>
+            </DivTooltip>
+        </div>
     </>;
 };
 
@@ -60,6 +53,7 @@ const DivTooltip = styled.div`
     box-shadow: 3px 3px 8px 0 rgba(0, 0, 0, 0.2);
     top: ${props => props.pointX && (props.pointX * 1.6)}px;
     left: ${props => props.pointY && (props.pointY * 1.6 + 11)}px;
+    z-index: 1000;
 `
 
 const TooltipImage = styled.div`
