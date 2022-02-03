@@ -19,11 +19,21 @@ const ContentImage = ({imageUrl, id, productList, handleSelect, selectItem}) => 
           <div key={product.productId}>
             {selectItem === product.productId 
             ?
-            <Tag key={product.productId} pointX={product.pointX} pointY={product.pointY} onClick={() => {handleSelect('none')}}>
+            <Tag 
+              key={product.productId} 
+              pointX={product.pointX} 
+              pointY={product.pointY} 
+              onClick={() => {handleSelect('none')}}
+            >
               <img className="tag_image" src="./img/x_button.png" alt="닫기" />
             </Tag>
             :
-            <Tag key={product.productId} pointX={product.pointX} pointY={product.pointY} onClick={() => {handleSelect(product.productId)}}>
+            <Tag 
+              key={product.productId} 
+              pointX={product.pointX} 
+              pointY={product.pointY} 
+              onClick={() => {handleSelect(product.productId)}}
+            >
               <img className="tag_image" src="./img/plus_button.png" alt="자세히 보기" />
             </Tag>}
             <ToolTip 

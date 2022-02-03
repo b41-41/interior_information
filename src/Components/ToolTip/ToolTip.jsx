@@ -1,16 +1,16 @@
 import React from 'react';
 import commaNumber from 'utils/commaNumber'
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import 'style/ToolTip.css';
 
 const ToolTip = ({product, selectItem}) => {
-    return <>
-        <div key={product.productId}>
-            <DivTooltip 
+    return <DivTooltip 
                 pointX={product.pointX} 
                 pointY={product.pointY}
                 selectItem={selectItem}
                 productId={product.productId}
+                BottomBox={product.pointX < 250 ? false : true}
+                leftBox={product.pointY < 250 ? false : true}
                 >
             <TooltipImage imageUrl={product.imageUrl} />
                 <div className="tooltip_desc">
@@ -34,9 +34,7 @@ const ToolTip = ({product, selectItem}) => {
                 <div className="tooltip_move-icon-wrapper">
                     <img className="tooltip_move-icon" src="./img/more.png" alt="상품 정보 보기" />
                 </div>
-            </DivTooltip>
-        </div>
-    </>;
+            </DivTooltip>;
 };
 
 const DivTooltip = styled.div`
@@ -51,9 +49,45 @@ const DivTooltip = styled.div`
     background-color: white;
     border-radius: 7px;
     box-shadow: 3px 3px 8px 0 rgba(0, 0, 0, 0.2);
-    top: ${props => props.pointX && (props.pointX * 1.6)}px;
-    left: ${props => props.pointY && (props.pointY * 1.6 + 11)}px;
+    // top: ${props => props.pointX && (props.pointX * 1.6)}px;
+    // left: ${props => props.pointY && (props.pointY * 1.6 + 11)}px;
     z-index: 1000;
+    &:before {
+        content: '';
+        position: absolute;
+        top: -8px;
+        left: 30px;
+        width: 12px;
+        height: 8px;
+        background-image: url(//cdn.ggumim.co.kr/storage/20211118152728RO3OXnhkrC.png);
+        background-size: cover;
+        background-repeat: no-repeat;
+        z-index: 1100;
+    }
+    ${props =>
+    props.BottomBox
+        ? css`
+            top: ${props => props.pointX && (props.pointX * 1.6) - 114}px;
+            left: ${props => props.pointY && (props.pointY * 1.6 - 10)}px;
+            &:before {
+            top: unset;
+            bottom: -8px;
+            transform: rotate(180deg);
+            }
+        `
+        : css`
+            top: ${props => props.pointX && (props.pointX * 1.6) + 24}px;
+            left: ${props => props.pointY && (props.pointY * 1.6 - 10)}px;
+        `}
+    ${props =>
+    props.leftBox &&
+    css`
+        left: ${props => props.pointY && (props.pointY * 1.6 - 152)}px;
+        &:before {
+        left: unset;
+        right: 36px;
+        }
+    `}
 `
 
 const TooltipImage = styled.div`
