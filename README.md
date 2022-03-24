@@ -6,10 +6,6 @@
 ## 프로젝트 기간
 22.02.02 ~ 22.02.04
 
-## 배포 링크
-
-[http://kkumim.herokuapp.com](http://kkumim.herokuapp.com)
-
 ## 구현 목록
 
 ![Feb-03-2022 23-10-59](https://user-images.githubusercontent.com/90027202/152359252-b188579a-1643-476b-ba61-4d7ca786a8f5.gif)
